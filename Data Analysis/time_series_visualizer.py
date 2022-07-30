@@ -5,7 +5,7 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
 # Import data (Make sure to parse dates. Consider setting index column to 'date'.)
-df = pd.read_csv('fcc-forum-pageviews.csv', parse_dates=['date'], index_col='date')
+df = pd.read_csv('data/fcc-forum-pageviews.csv', parse_dates=['date'], index_col='date')
 # Clean data
 df = df[(df['value']>=df['value'].quantile(0.025)) & (df['value']<=df['value'].quantile(0.975))]
 
@@ -17,7 +17,7 @@ def draw_line_plot():
     plt.ylabel('Page Views')
     sns.lineplot(data=df, x='date', y='value')
     # Save image and return fig (don't change this part)
-    fig.savefig('line_plot.png')
+    fig.savefig('output/line_plot.png')
     return fig
 
 def draw_bar_plot():
@@ -32,7 +32,7 @@ def draw_bar_plot():
     fig = df_bar.plot.bar(xlabel='Years', ylabel='Average Page Views', figsize=(10,5), legend=True).figure
     plt.legend(months).figure
     # Save image and return fig (don't change this part)
-    fig.savefig('bar_plot.png')
+    fig.savefig('output/bar_plot.png')
     return fig
 
 def draw_box_plot():
@@ -55,7 +55,7 @@ def draw_box_plot():
     ax[1].set_xlabel('Month')
     ax[1].set_ylabel('Page Views')
     # Save image and return fig (don't change this part)
-    fig.savefig('box_plot.png')
+    fig.savefig('output/box_plot.png')
     return fig
 
 draw_line_plot()

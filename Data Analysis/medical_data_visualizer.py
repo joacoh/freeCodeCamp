@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Import data
-df = pd.read_csv('medical_examination.csv')
+df = pd.read_csv('data/medical_examination.csv')
 
 # Add 'overweight' column
 df['overweight'] = df['weight']/((df['height']/100)**2)
@@ -26,7 +26,7 @@ def draw_cat_plot():
     # Draw the catplot with 'sns.catplot()'
     fig = sns.catplot(x='variable', y='total', data=df_cat, kind='bar', hue='value', col='cardio').fig
     # Do not modify the next two lines
-    fig.savefig('catplot.png')
+    fig.savefig('output/catplot.png')
     return fig
 
 # Draw Heat Map
@@ -42,7 +42,7 @@ def draw_heat_map():
     # Draw the heatmap with 'sns.heatmap()'
     sns.heatmap(corr, mask=mask, annot=True, square=True, cbar_kws={'shrink':0.5}, linewidths=1, fmt='.1f', center=0.08)
     # Do not modify the next two lines
-    fig.savefig('heatmap.png')
+    fig.savefig('output/heatmap.png')
     return fig
 
 draw_cat_plot()
